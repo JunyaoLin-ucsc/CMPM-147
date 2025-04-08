@@ -2,16 +2,6 @@
 // Author: Junyao Lin
 // Date: 4/7/2025
 
-// NOTE: This is how we might start a basic JavaaScript OOP project
-
-// Constants - User-servicable parts
-// In a longer project I like to put these in a separate file
-
-// project.js - Modified Glitch generator code for Experiment 1
-// Author: Your Name
-// Date: 4/7/2025
-
-// Define the fillers object which holds arrays of words for each placeholder.
 const fillers = {
   dishAdj: ["Mysterious", "Suspicious", "Unidentifiable", "Secret", "Forgotten", "Cursed", "Forbidden", "Haunted", "Enchanted", "Unholy", "Questionable"],
   dishMain: ["Soup", "Stew", "Pasta", "Sandwich", "Curry", "Salad", "Burger", "Pizza", "Pie", "Cake", "Sushi", "Hotpot"],

@@ -1,163 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EXPERIMENT 1 - HELLO GLITCH/GENERATOR</title>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment X - Subject/Topic</title>
 
-  <!-- 1) Load jQuery first (no defer) so it's ready before project.js executes -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-    crossorigin="anonymous"></script>
-  
-  <!-- 2) Our local project script (converted from your Glitch script.js) -->
-  <script src="./js/project.js" defer></script>
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Inline CSS to replicate Glitch styling + professor's format -->
-  <style>
-    /* Body style - replicate the Glitch background and font */
-    body {
-      background-color: #fff8e1;
-      font-family: 'Georgia', serif;
-      margin: 0; 
-      padding: 2em;
-      text-align: center;
-    }
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-    /* Top-level heading: shows the experiment name */
-    h1 {
-      font-size: 1.8em;
-      color: #333;
-      margin-bottom: 1.2em;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
 
-    /* Secondary heading for the actual menu title */
-    h2 {
-      font-size: 2em;
-      color: #5c3b1e;
-      margin: 0.5em 0;
-    }
-
-    /* The 'Reroll It!' button style, same as Glitch */
-    #clicker {
-      padding: 0.6em 1.2em;
-      font-size: 1em;
-      background-color: #d7a84b;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      margin-top: 1em;
-      margin-bottom: 1em;
-    }
-
-    /* The "window" that shows generated text, replicate Glitch's dashed border + background */
-    #box {
-      font-family: 'Courier New', monospace;
-      border: 2px dashed #8b5e3c;
-      padding: 1.5em;
-      margin: 2em auto;
-      max-width: 600px;
-      background: #fff3cd;
-      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
-      white-space: pre-line;
-      text-align: left;  /* optional: left-align the text inside */
-    }
-
-    /* Minor sections for Description, Technical, Reflection, etc. */
-    .minor-section {
-      margin: 2em auto;
-      max-width: 700px;
-      text-align: left;
-    }
-
-    .minor-section h2 {
-      font-size: 1.3em;
-      color: #444;
-      margin-top: 1em;
-    }
-
-    .minor-section p {
-      line-height: 1.5;
-      margin-top: 0.5em;
-    }
-
-    /* Navigation link styling */
-    #links ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    #links li {
-      display: inline-block;
-      margin-right: 1em;
-    }
-    #links a {
-      text-decoration: none;
-      color: #5c3b1e;
-      font-weight: bold;
-    }
-  </style>
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFER></script>
+	<!-- Use me for a JavaScript OOP Project -->
+	<script type="text/javascript" src="./js/project.js" DEFER></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
 </head>
 <body>
-  <main id="content">
-    <!-- The "EXPERIMENT 1" heading -->
-    <h1>EXPERIMENT 1 - HELLO GLITCH/GENERATOR</h1>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
 
-    <!-- The suspicious restaurant menu heading -->
-    <h2>🍽 Suspicious Restaurant Menu 🍽</h2>
-    
-    <!-- The reroll button and the "window" (box) for generated text -->
-    <button id="clicker">Reroll It!</button>
-    <div id="box"></div>
-    
-    <!-- Link back to original Glitch project -->
-    <p>
-      Translated from 
-      <a href="https://glitch.com/~cmpm147-ex01-bad-quests" target="_blank">
-        cmpm147-ex01-bad-quests
-      </a>
-    </p>
+			<h1>Experiment 1 - Suspicious Restaurant Menu Generator</h1>
 
-    <!-- Description section -->
-    <div class="minor-section">
-      <h2>Description</h2>
-      <p>
-        This experiment generates a suspicious restaurant menu by creating random text 
-        based on a grammar. The code was originally developed on Glitch and then migrated 
-        to this static webpage.
-      </p>
-    </div>
+			<div class="minor-section">
+				<div class="minor-section">
+          <button id="clicker">Reroll it!</button>
+          <div id="box"></div>
+      </div>
+                <div class="fullscreen-box">
+                    <button id="fullscreen">Fullscreen</button>
+                </div>
+			</div>
 
-    <!-- Technical section -->
-    <div class="minor-section">
-      <h2>Technical</h2>
-      <p>
-        The generator uses a simple grammar-based text generation approach.
-        It randomly selects elements from predefined word arrays to replace the placeholders 
-        in a template string. jQuery is then used to display the generated text in the webpage.
-      </p>
-    </div>
+			<div class="minor-section">
+				<h2>Description</h2>
+				<p>In this experiment, I developed a dynamic text generator that creates a “suspicious restaurant menu.” 
+					The generator assembles various descriptive elements using a simple grammar structure to produce a unique, whimsical menu 
+					item each time the user clicks the button. Originally built on Glitch, this project was redesigned and integrated into my 
+					personal portfolio.</p>
+			</div>
 
-    <!-- Reflection section -->
-    <div class="minor-section">
-      <h2>Reflection</h2>
-      <p>
-        By integrating the Glitch project into a local static website, I learned how to 
-        transition and adapt code for different environments. This process improved my 
-        understanding of DOM manipulation with jQuery and managing multi-file projects. 
-        Having the final result match the original Glitch style was also a key goal.
-      </p>
-    </div>
+			<div class="minor-section">
+				<h2>Technical</h2>
+				<p>The project is built with HTML, CSS, and JavaScript, with jQuery used for DOM manipulation and event handling. 
+					It operates by defining arrays of words (fillers) for different components of a menu item, then uses a template string 
+					with placeholders that are replaced by randomly selected words. A regular expression searches for these placeholders in the 
+					template, and each click of the "Reroll It!" button triggers the regeneration of the text. The code was originally developed on Glitch and later migrated to a local static page.</p>
+			</div>
 
-    <!-- Navigation menu -->
-    <nav id="links" class="minor-section">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-      </ul>
-    </nav>
-  </main>
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>This experiment was an excellent opportunity to practice dynamic content generation and the integration of third-party 
+					platforms into a local environment. I encountered challenges with adapting the Glitch development process to a standalone 
+					static webpage, particularly in managing file paths and load orders. Through this process, I deepened my understanding of 
+					jQuery for handling events and DOM updates, and I learned how to troubleshoot issues that arise during code migration. 
+					Overall, it improved my skills in web development and prepared me for more complex projects in the future.</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+            <ul style="list-style-type:none; margin:0; padding:0;">
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
 </body>
 </html>
