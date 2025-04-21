@@ -21,23 +21,20 @@ body {
     flex: 0 0 auto;
   }
   
-  textarea {
-    flex: 1;
-    width: auto;  
-    height: auto; 
+  .gen-row textarea {
+    flex: 0 0 auto;
+    width: 640px; 
+    height: 640px; 
     box-sizing: border-box;
-  }
-  
-  canvas {
-    width: 100%;
-    height: auto;
-    image-rendering: pixelated;
-  }
-  
-  textarea {
     opacity: 0.5;
     letter-spacing: 1ex;
     font-family: monospace;
+    overflow: auto;
+  }
+  
+  canvas {
+    image-rendering: pixelated;
+    display: block;
   }
   
   button {
