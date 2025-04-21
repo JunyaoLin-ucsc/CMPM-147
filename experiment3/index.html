@@ -1,70 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
-
-	<!-- Use UTF character set, a good idea with any webpage -->
-	<meta charset="UTF-8" />
-	<!-- Set viewport so page remains consistently scaled w narrow devices -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
-	<link rel="stylesheet" type="text/css" href="../css/site.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-	<!-- Load jQuery library -->
-	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-        crossorigin="anonymous"></script>
-	<!-- Load p5.js library -->
-	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
-
-	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
-    <script type="text/javascript" src="../js/site.js" DEFER></script>
-	<!-- Use me for a JavaScript OOP Project -->
-	<script type="text/javascript" src="./js/project.js" DEFER></script>
-	<!-- Use me for a p5.js project -->
-	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experiment 3 - Alternate Worlds</title>
+  <link rel="stylesheet" href="../css/site.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+  <script src="../js/site.js" defer></script>
+  <script src="./js/sketch.js" defer></script>
 </head>
 <body>
-	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
-	<main id="content">
-		<section>
+  <main id="content">
+    <section>
+      <h1>Experiment 3 - Alternate Worlds</h1>
 
-			<h1>Experiment X - Subject/Topic</h1>
+      <div class="generator">
+        <h2>Overworld</h2>
+        <button id="reseed-overworld">reseed</button>
+        <span id="seedReport-overworld"></span>
+        <hr />
+        <div class="gen-row">
+          <div id="canvasContainer-overworld"></div>
+          <textarea
+            id="asciiBox-overworld"
+            cols="40"
+            rows="40"
+            style="opacity: 0.5; letter-spacing: 1ex; font-family: monospace;"
+          ></textarea>
+        </div>
+      </div>
 
-			<div class="minor-section">
-				<div id="canvas-container">
-					<!-- canvas will be added here -->
-				</div>
-                <div class="fullscreen-box">
-                    <button id="fullscreen">Fullscreen</button>
-                </div>
-			</div>
+      <div class="generator">
+        <h2>Dungeon</h2>
+        <button id="reseed-dungeon">reseed</button>
+        <span id="seedReport-dungeon"></span>
+        <hr />
+        <div class="gen-row">
+          <div id="canvasContainer-dungeon"></div>
+          <textarea
+            id="asciiBox-dungeon"
+            cols="40"
+            rows="40"
+            style="opacity: 0.5; letter-spacing: 1ex; font-family: monospace;"
+          ></textarea>
+        </div>
+      </div>
 
-			<div class="minor-section">
-				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
-			</div>
+      <div class="minor-section">
+        <h2>Description</h2>
+        <p>
+          A pair of procedural generators: one for an overworld with smoothly
+          blended biomes, and one for a dungeon composed of rectangular rooms
+          and corridors.
+        </p>
+      </div>
 
-			<div class="minor-section">
-				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
-			</div>
+      <div class="minor-section">
+        <h2>Technical</h2>
+        <p>
+          Generation is separated from rendering: each seed produces a grid of
+          single-character codes. Autotiling logic computes transition tiles
+          based on neighbors. The editable text area updates the scene
+          immediately. Animated variation and perlin-noise–based effects use
+          p5.js’s noise(), random(), and millis().
+        </p>
+      </div>
 
-			<div class="minor-section">
-				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
-			</div>
+      <div class="minor-section">
+        <h2>Reflection</h2>
+        <p>
+          Implementing bitmask autotiling deepened my understanding of spatial
+          data structures and neighbor-based algorithms. Integrating live text
+          editing revealed challenges in syncing state. Future improvements
+          include mouse-driven interactions and richer tile decorations.
+        </p>
+      </div>
+    </section>
 
-		</section>
-		<nav id="links" class="minor-section">
-			<!-- Put link back to homepage here. -->
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-            </ul>
-		</nav>
-	</main>
+    <nav id="links">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+      </ul>
+    </nav>
+  </main>
 </body>
 </html>
