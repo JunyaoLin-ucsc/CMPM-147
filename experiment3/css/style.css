@@ -6,8 +6,21 @@ body {
     font-family: sans-serif;
   }
   
+  .generator-window {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    position: relative;
+  }
+  
+  .fullscreen-box {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+  }
+  
   .generator {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
   }
   
   .gen-row {
@@ -23,12 +36,13 @@ body {
   
   .gen-row textarea {
     flex: 0 0 auto;
-    width: 640px; 
-    height: 640px; 
+    width: 640px;
+    height: 640px;
     box-sizing: border-box;
     opacity: 0.5;
     letter-spacing: 1ex;
     font-family: monospace;
+    resize: vertical;
     overflow: auto;
   }
   

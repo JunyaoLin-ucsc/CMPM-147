@@ -20,35 +20,37 @@
     <section>
       <h1>Experiment 3 - Alternate Worlds</h1>
 
-      <div class="generator">
-        <h2>Overworld</h2>
-        <button id="reseed-overworld">reseed</button>
-        <span id="seedReport-overworld"></span>
-        <hr />
-        <div class="gen-row">
-          <div id="canvasContainer-overworld"></div>
-          <textarea
-            id="asciiBox-overworld"
-            cols="40"
-            rows="40"
-            style="opacity: 0.5; letter-spacing: 1ex; font-family: monospace;"
-          ></textarea>
+      <div class="generator-window" id="gen-window">
+        <div class="generator">
+          <h2>Overworld</h2>
+          <button id="reseed-overworld">reseed</button>
+          <span id="seedReport-overworld"></span>
+          <div class="gen-row">
+            <div id="canvasContainer-overworld"></div>
+            <textarea
+              id="asciiBox-overworld"
+              cols="40" rows="40"
+            ></textarea>
+          </div>
         </div>
-      </div>
 
-      <div class="generator">
-        <h2>Dungeon</h2>
-        <button id="reseed-dungeon">reseed</button>
-        <span id="seedReport-dungeon"></span>
-        <hr />
-        <div class="gen-row">
-          <div id="canvasContainer-dungeon"></div>
-          <textarea
-            id="asciiBox-dungeon"
-            cols="40"
-            rows="40"
-            style="opacity: 0.5; letter-spacing: 1ex; font-family: monospace;"
-          ></textarea>
+        <hr/>
+
+        <div class="generator">
+          <h2>Dungeon</h2>
+          <button id="reseed-dungeon">reseed</button>
+          <span id="seedReport-dungeon"></span>
+          <div class="gen-row">
+            <div id="canvasContainer-dungeon"></div>
+            <textarea
+              id="asciiBox-dungeon"
+              cols="40" rows="40"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="fullscreen-box">
+          <button id="toggle-fullscreen">Fullscreen</button>
         </div>
       </div>
 
@@ -89,5 +91,17 @@
       </ul>
     </nav>
   </main>
+
+  <script>
+    const btn = document.getElementById('toggle-fullscreen');
+    const win = document.getElementById('gen-window');
+    btn.addEventListener('click', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        win.requestFullscreen();
+      }
+    });
+  </script>
 </body>
 </html>
