@@ -1,4 +1,9 @@
 /* style.css */
+/* Set the canvas element to be the full size of the container */
+canvas {
+    width: 100%;
+    height: 100%;
+}
 
 body {
     background-color: white;
@@ -62,4 +67,8 @@ body {
   .minor-section {
     margin-top: 30px;
   }
-  
+
+#canvas-container {
+    width: 100%;
+    height: 600px;
+}
