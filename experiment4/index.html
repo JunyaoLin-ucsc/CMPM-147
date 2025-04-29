@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Experiment 4 - Infinite Worlds Integration</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+	<script src="https://unpkg.com/xxhashjs@0.2.2/build/xxhash.min.js" defer></script>
+
+	<script type="text/javascript" src="../js/site.js" defer></script>
+	<script type="text/javascript" src="./js/sketch.js" defer></script>
+</head>
+<body>
+	<main id="content">
+		<section>
+
+			<h1>Experiment 4 - Infinite Worlds Integration</h1>
+
+			<div class="minor-section">
+				<div id="canvas-container">
+					</div>
+				<div class="fullscreen-box">
+                    <button id="toggle-fullscreen">Fullscreen</button>
+                </div>
+			</div>
+
+			<div class="minor-section">
+				<h2>Description</h2>
+				<p>
+					This "Infinite Worlds Integration" project successfully merges three distinct, procedurally generated environments into a unified interactive experience using the p5.js library. Built upon a shared isometric tile engine, the sketch allows users to explore unique, infinitely scrolling worlds. A key feature is the deterministic generation based on a user-provided "world key," utilizing the XXH hashing algorithm to ensure reproducibility. Users can seamlessly switch between the three worlds—a dynamic 3D terrain, a varied biome landscape, and an interactive rhythm game—via an overlaid UI toolbar, which also allows for changing the world key on the fly.
+				</p>
+				<p>
+					Each world offers a unique aesthetic and interaction paradigm, fulfilling the assignment's requirements for infinity, spatial variation, key-based variation, and interactive "signs of life." The first world presents undulating terrain with animated trees. The second showcases distinct environmental zones like water, grass, and dirt, each with subtle animations. The third transforms the canvas into a rhythm game requiring clicks, holds, and drags. The project uses p5.js not only for visual rendering but also for handling complex user interactions and managing the state across different modules. Furthermore, the application features a responsive canvas that adapts to the browser window size, enhancing the user experience. This integration demonstrates a practical application of procedural generation techniques and interactive designing within the p5.js framework.
+				</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Technical</h2>
+				<p>The project architecture features a central p5.js engine managing an isometric tile display (<code>worldToScreen</code>, <code>screenToWorld</code>), camera controls, and a core rendering loop (<code>draw</code>). World-specific logic is encapsulated within Immediately Invoked Function Expressions (IIFEs) stored in the <code>WORLDS</code> object, accessed via a router (<code>_w()</code>) that forwards standard <code>p3_*</code> hook calls. Deterministic randomness relies on <code>XXH.h32</code> hashing of the world key to seed <code>noiseSeed</code> and <code>randomSeed</code> in <code>p3_worldKeyChanged</code> for each world. A DOM-based UI toolbar handles world switching and key input, triggering <code>rebuildWorld</code>. CSS and a <code>windowResized</code> function provide canvas responsiveness.</p>
+				<ul>
+					<li>
+						<strong>World 1 (Terrain):</strong> Uses Perlin <code>noise()</code> for height-mapped terrain with <code>pow()</code> exaggeration and <code>lerpColor</code>. Pseudo-3D effect achieved via side face shading based on height differences. <code>sin(millis())</code> creates subtle life via tile bobbing and tree swaying. Click interaction adds markers. *Fulfills requirements via noise (Infinity, Space/Key Var.) & animation/clicks (Life).*
+					</li>
+					<li>
+						<strong>World 2 (Biomes):</strong> Uses <code>noise()</code> thresholds to define water, grass, dirt, and snow zones. Animations like waves and pulsing alpha (<code>sin(millis())</code>, <code>sin(frameCount)</code>) provide Signs of Life. Click interaction adds markers. *Fulfills requirements via noise (Infinity, Space/Key Var.) & animation/clicks (Life).*
+					</li>
+					<li>
+						<strong>World 3 (Starry Rhythm):</strong> An interactive game. Uses <code>createGraphics</code> for a static starfield background. Manages game state (<code>currentNote</code>, <code>gameStarted</code>). <code>millis()</code> controls note timing/visuals. Complex interactions (click, hold, drag) are central Signs of Life, with drag-release using robust screen <code>dist()</code> checking. Includes particle/meteor effects. *Fulfills requirements via grid (Infinity), note sequence (Space/Key Var.), & core gameplay (Life).*
+					</li>
+				</ul>
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>
+					Integrating three distinct infinite world generators into a single p5.js application was a significant learning experience, deepening my understanding of modular code design, state management, and the nuances of procedural generation within p5.js. The most substantial challenge was structuring the code using IIFEs and a router function (<code>_w()</code>) to manage three distinct worlds within a single engine, preventing state conflicts and ensuring modularity. This approach was crucial for handling the unique requirements and interaction models of each world without interference. Debugging the varied interaction types, especially the mouse events (click vs. press vs. release) and coordinate transformations for World 3's drag mechanic, was challenging but ultimately rewarding, leading to the implementation of a more robust screen-distance check.
+				</p>
+				<p>
+					Implementing deterministic randomness using <code>XXH.h32</code> hashing and p5.js's seeding functions (<code>noiseSeed</code>, <code>randomSeed</code>) was a key takeaway. It allowed for the creation of infinitely varied yet reproducible worlds based solely on the input key, fulfilling a core requirement in diverse ways across the three generators. Working extensively with Perlin noise for different purposes (terrain height, biome mapping), color manipulation (RGB vs. HSB, <code>lerpColor</code>), time-based animation (<code>millis()</code>, <code>frameCount</code>), and DOM integration for the UI provided valuable hands-on experience with the versatility of the p5.js library. Overcoming the challenges of state management, event handling across modules, and achieving reliable interaction mechanics fostered significant growth in my problem-solving abilities within the creative coding context. The project solidified my appreciation for p5.js as a powerful tool for both visual expression and building interactive experiences.
+				</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<ul>
+				<li><a href="../index.html">Home</a></li>
+			</ul>
+		</nav>
+	</main>
+</body>
+</html>
