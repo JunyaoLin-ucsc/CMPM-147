@@ -920,7 +920,7 @@ function p3_drawAfter()                            { _w()?.p3_drawAfter?.(); }
 
 window.addEventListener("DOMContentLoaded", () => {
 
-    runAfterP5(() => { // ⬅ 确保 p5 已加载
+    runAfterP5(() => { 
 
       const bar = document.createElement("div");
       bar.style.cssText =

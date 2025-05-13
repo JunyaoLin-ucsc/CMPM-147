@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 5 - Evolutionary Impressions</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFEsR></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/my_design.js" DEFER></script>
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 5 - Evolutionary Impressions</h1>
+
+			<div class="minor-section results">
+                <div class="results-top">
+                    <div class="image-container">
+                        <p id="original"></p>
+                        <p class="caption"></p>
+                    </div>
+                    <div class="image-container">
+                        <p id="active"></p>
+                        <p>Active Image</p>
+                    </div>
+                    <div class="image-container">
+                        <p id="best"></p>
+                        <p>Best Image</p>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="controls-col1">
+                        <select id="dropper"></select>
+                        <button id="restart">
+                        restart
+                        </button>
+                        <p>
+                        Mutation rate (<span id="rate"></span>%):<br /><input
+                            id="slider"
+                            type="range"
+                            min="1"
+                            max="100"
+                            value="100"
+                        />
+                        </p>
+                    </div>
+                    <div class="controls-col2">
+                        <p>Active score: <span id="activeScore"></span></p>
+                        <p>Exploration rate: <span id="fpsCounter"></span> fps</p>
+                        <p>Best score: <span id="bestScore"></span></p>
+                    </div>
+                </div>
+
+                <div class="results-bottom">
+                    <p id="memory" data-max-items="28"></p>
+                </div>
+			</div>
+
+			<div class="minor-section">
+				<h2>Description</h2>
+				<p>This experiment creates "evolutionary impressions" of selected images. A generative algorithm uses simple shapes and iteratively refines its design to visually match a target image, driven by a pixel-difference score and user-controlled mutation rate.</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Technical</h2>
+                <p>This generator is powered by my_design,.js and sketch.js, this project generates art by evolving designs of 100 semi-transparent rectangles. getInspirations provides image sources. initDesign sets up initial random parameters (background, shape properties) and handles canvas sizing. renderDesign draws the rectangles using their stored fill and a fixed alpha. mutateDesign applies Gaussian-scaled random changes to these parameters based on a UI slider rate. evaluate uses Mean Squared Error (MSE) pixel comparison against a target image to score designs, with an exponential function mapping error to fitness. The p5.js draw loop drives the evolution.</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>This is a new p5.js technique to me, which is very fun. I was keep getting fascinated by new ways to "draw" by code. After the work, I felt that there is still a lot of place to work on and improve, just like any other experiment. For example, currently the rectangle is the most fit shape for generation based on my testing. However, I will try to discover a more appropriate use of ellipse. </p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
